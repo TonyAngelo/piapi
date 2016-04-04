@@ -87,9 +87,9 @@ class DirecTV(Observable):
 
     def sendchan(self,chan,minor):
         # http://STBIP:port/tv/tune?major=num[&minor=num][&clientAddr=string]
-        chanstring=str(chan)
-        if minor>0:
-            chanstring=chanstring+'&minor='+str(minor)
+        chanstring=chan
+        if int(minor)>0:
+            chanstring=chanstring+'&minor='+minor
         data=self.getjson(self.geturl(self.buildurl('/tv/tune?major='+chanstring+'&clientAddr=0')))
 
     def sendpower(self,power):
